@@ -18,7 +18,19 @@
 
     --font-family: cursive;
 }
-
+#backButton{
+    color: white;
+    background-color: red;
+    border-radius: 12px;
+    border: 1px solid grey;
+    text-align: center;
+    width: 200px;
+    height: 45px;
+    font-size: 12px;
+}
+#backButton:hover{
+    background-color: green;
+}
 .dark {
     --bg-body: var(--dark-body);
     --bg-main: var(--dark-main);
@@ -211,7 +223,22 @@ body {
     margin: 0 10px;
     cursor: pointer;
 }
-
+.month-select{
+    display: flex;
+    align-items: center;
+}
+.month-change{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.month-change:hover{
+    background-color: var(--color-hover);
+}
 .year-change:hover {
     background-color: var(--color-hover);
 }
