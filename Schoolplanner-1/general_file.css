@@ -1,0 +1,242 @@
+/*dashboaurd.html*/
+
+.form-control-primary{
+    margin: 10px;
+    opacity: 1;
+    border-radius: 2px;
+  }
+  .sidebar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+    padding: 70px 0 0 10px;
+    border-radius: 1px solid #d3d3d3;
+  }
+  .left-sidebar{
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 70px);
+  }
+  .sidebar-nav li .nav-link{
+    color: #333;
+    font-weight: 500;
+  }
+  .main{
+    padding-top: 90px;
+  }
+  main .card{
+    margin-bottom: 20px;
+  }
+
+  /*ToDoCheckBox*/
+/*
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+  }
+
+  body{
+    background: #f2f2f2;
+    overflow: auto;
+  }
+
+  h1{
+    text-align: center;
+    margin: 5%;
+    font-size: 3rem;
+    text-decoration: underline;
+  }
+  ul{
+    text-align: left;
+    padding-left: 10%;
+    padding: 7%;
+    font-size: 2rem;
+    list-style: circle;
+  }
+  li:hover{
+    color: red;
+    margin: 4%;
+    transition: 1.5s ease;
+    cursor: pointer;
+  }
+  .backButton{
+    border-radius: 12px;
+    color: white;
+    background-color: red;
+  }
+
+  /*main page*/
+  body{
+    background: #383a3d;
+    padding-top: 20px;	
+  }
+  /* set form background colour*/
+  form{
+    background: #fff;
+  }
+  /* set padding and size of th form */
+  .form-container{
+    border-radius: 10px;
+    padding: 30px;
+  }
+  .headline{
+    color: white;
+    position: relative;
+    bottom: 20px;
+  }
+
+
+  /*notes*/
+  .form-control-primary{
+    margin: 10px;
+    opacity: 1;
+    border-radius: 2px;
+  }
+  .sidebar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+    padding: 70px 0 0 10px;
+    border-radius: 1px solid #d3d3d3;
+  }
+  .left-sidebar{
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 70px);
+  }
+  .sidebar-nav li .nav-link{
+    color: #333;
+    font-weight: 500;
+  }
+  .main{
+    padding-top: 90px;
+  }
+  main .card{
+    margin-bottom: 20px;
+  }
+  .btn {
+      margin-top:2.5%;
+      margin-left: 25%;
+      background-color: DodgerBlue;
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 20px;
+  }
+  .btn:hover {
+      background-color: RoyalBlue;
+  }
+
+  /*chechbox*/
+
+.container_error{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 15px;
+  margin-left: 23%;
+  position:absolute;
+  top: 160px
+}
+
+#descriptionText{
+  width: 800px;
+  margin: 0px;
+  margin-right:0px;
+}
+
+.pref{
+  border: 0px solid white;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+
+.importance_cont{
+  margin: 0px 10px;
+}
+
+.chill{
+  background-color: blue;
+}
+
+.mild{
+  background-color: yellow;
+}
+
+.important{
+  background-color: red;
+}
+
+
+li{
+  text-decoration: none;
+  font-weight: 10px;
+
+}
+
+ul{
+  list-style-type: none;
+  font-weight: 50px;
+}
+
+
+#list_item{
+  text-decoration: none;
+  padding:0px;
+}
+
+
+.chill_{
+  width: 500%;
+  height: 100px;
+  padding: 20px;
+  margin: 20px 0px;
+  font-weight: 50px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: blue;
+}
+
+.mild_{
+  width: 500%;
+  height: 100px;
+  padding: 20px;
+  margin: 20px 0px;
+  font-weight: 50px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: yellow;
+}
+
+.important_{
+  width: 500%;
+  height: 100px;
+  padding: 20px;
+  font-weight: 50px;
+  margin: 20px 0px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: red;
+}
+
+.plain_{
+  width: 500%;
+  height: 100px;
+  padding: 20px;
+  font-weight: 50px;
+  margin: 20px 0px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: rgb(196, 181, 158);
+}
+
+#pow_selector{
+  font-size: 10px;
+}
