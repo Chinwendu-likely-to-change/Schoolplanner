@@ -1,15 +1,16 @@
+//Create calendar variable for calendar.
 let calendar = document.querySelector('.calendar')
-
+//Create list of month names.
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
+//Determine if current year is leap year.
 isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
 }
-
+//Get days in month of exceptional february.
 getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
-
+//Generate content of calendar from present date data.
 generateCalendar = (month, year) => {
 
     let calendar_days = calendar.querySelector('.calendar-days')
@@ -50,6 +51,7 @@ generateCalendar = (month, year) => {
 
 let month_list = calendar.querySelector('.month-list')
 
+//Opens month selection screen when month is clicked on.
 month_names.forEach((e, index) => {
     let month = document.createElement('div')
     month.innerHTML = `<div data-month="${index}">${e}</div>`
@@ -83,7 +85,30 @@ document.querySelector('#next-year').onclick = () => {
     ++curr_year.value
     generateCalendar(curr_month.value, curr_year.value)
 }
-
+document.querySelector('#prev-month').onclick = () => {
+    --curr_month.value
+    if(curr_month.value < 0){
+        curr_month.value = 11
+        curr_year.value -= 1
+    }
+    if(curr_month.value > 11){
+        curr_month.value = 0
+        curr_year.value += 1
+    }
+    generateCalendar(curr_month.value, curr_year.value)
+}
+document.querySelector('#next-month').onclick = () => {
+    ++curr_month.value
+    if(curr_month.value < 0){
+        curr_month.value = 11
+        curr_year.value -= 1
+    }
+    if(curr_month.value > 11){
+        curr_month.value = 0
+        curr_year.value += 1
+    }
+    generateCalendar(curr_month.value, curr_year.value)
+}
 /*
 let dark_mode_toggle = document.querySelector('.dark-mode-switch')
 dark_mode_toggle.onclick = () => {
