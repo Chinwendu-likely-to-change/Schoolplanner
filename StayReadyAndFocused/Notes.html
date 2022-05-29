@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Student Notes</title>
+	<link rel="stylesheet" href=
+"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity=
+"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+  	
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src=
+"https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity=
+"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+    </script>
+      
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity=
+"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous">
+    </script>
+      
+    <script src=
+"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity=
+"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous">
+    </script>
+    <style>
+    	.hide{
+    		max-height: 0 !important;
+    	}
+    	.dropdown{
+    		border: 0.1em solid black;
+    		width: 10em;
+    		margin-bottom: 1em;
+    	}
+    	.dropdown .title{
+    		margin: .3em .3em .3em .3em;
+    		width: 100%;
+    	}
+    	.dropdown .title .fa-angle-right{
+    		float: right;
+    		margin-right: .7em;
+    		transition: transform .3s;
+    	}
+    	.dropdown .menu{
+    		transition: max-height .5s ease-out;
+    		max-height: 20em;
+    		overflow: hidden;
+    	}
+    	.dropdown .menu .option{
+    		margin: .3em .3em .3em 3em;
+    		margin-top: 0.3em;
+    	}
+    	.dropdown .menu .option:hover{
+    		background: rgba(0,0,0,0.2);
+    	}
+    	.pointerCursor:hover{
+    		cursor: pointer;
+    	}
+    	.rotate-90{
+    		transform: rotate(90deg);
+    	}
+    	.navbar{
+    		color: white;
+    		background-color: green;
+    		font-size: 30px;
+    	}
+    	.navbar-default{
+    		color: white;
+    		background-color: green;
+    		font-size: 30px;
+    	}
+    	.navbar-header{
+    		color: white;
+    		background-color: green;
+    		font-size: 30px;
+    	}
+    	.navbar-brand{
+    		color: white;
+    		background-color: green;
+    		font-size: 30px;
+    	}
+    </style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Schoolplanner</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="dashboard.html">Back to Dashboard</a></li>
+    </ul>
+  </div>
+</nav>
+	<div class="container my-3">
+		<h1>Take notes for your activities this week:</h1>
+		<div class='dropdown'>
+		<div class='title pointerCursor'>Course: <i class="fa fa-angle-right"></i></div>
+		<div class='menu pointerCursor hide'>
+			<div class='option' id='option1'>Calculus 1</div>
+			<div class='option' id='option2'>Literature & Philosophy</div>
+			<div class='option' id='option3'>French</div>
+			<div class='option' id='option4'>Computer Programming</div>
+			<div class='option' id='option5'>Basics of Engineering</div>
+		</div>
+
+	</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">
+					Add a Note
+				</h5>
+				<div class="form-group">
+					<textarea class="form-control" id="addTxt" rows="3">
+					</textarea>
+				</div>
+				<button class="btn btn-primary" 
+                    id="addBtn" style=
+                    "background-color:green">
+                    Add Note
+                </button>
+			</div>
+		</div>
+		<hr>
+		<div id="notes" class="row container-fluid">
+		</div>
+	</div>
+	<script>
+		let addBtn = document.getElementById("addBtn");
+		const dropdownTitle = document.querySelector('.dropdown .title');
+		const dropdownOptions = document.querySelectorAll('.dropdown .option');
+		dropdownTitle.addEventListener('click',toggleMenuDisplay);
+		dropdownOptions.forEach(option => option.addEventListener('click',handleOptionSelected));
+		addBtn.addEventListener("click",function(e){
+			let addTxt = document.getElementById("addTxt");
+			let notes = localStorage.getItem("notes");
+			if(notes == null) notesObj = [];
+			else notesObj = JSON.parse(notes);
+			notesObj.push(addTxt.value);
+			localStorage.setItem("notes",JSON.stringify(notesObj));
+			addTxt.value = "";
+			showNotes();
+		});
+		function showNotes(){
+			let notes = localStorage.getItem("notes");
+			if(notes == null) notesObj = [];
+			else notesObj = JSON.parse(notes);
+			let html = "";
+			notesObj.forEach(function(element,index){
+				const course = document.getElementById('result');
+				html += `<div class="noteCard my-2 mx-2 card" style="width:18rem;">
+					<div class="card-body">
+						<h5 class="card-title">
+							` + course.value + `
+						</h5>
+						<p class="card-text">
+							${element}
+						</p>
+						<button id="${index}" onclick="deleteNote(this.id)"
+						class="btn btn-primary">
+						Delete Note
+						</button>
+						</div>
+						</div>`;
+
+			});
+			let notesElm = document.getElementById("notes");
+			if(notesObj.length != 0) notesElm.innerHTML = html;
+			else
+				notesElm.innerHTML = `Nothing to show! Use "Add a Note" section above to add notes.`;
+		}
+		function deleteNote(index){
+			let notes = localStorage.getItem("notes");
+			if(notes == null) notesObj = [];
+			else notesObj = JSON.parse(notes);
+			notesObj.splice(index,1);
+			localStorage.setItem("notes",JSON.stringify(notesObj));
+			showNotes();
+		}
+		function toggleClass(elem,className){
+			if(elem.className.indexOf(className) !== -1){
+				elem.className = elem.className.replace(className,'');
+			}else{
+				elem.className = elem.className.replace(/\s+/g,' ') + ' ' + className;
+			}
+			return elem;
+		}
+		function toggleDisplay(elem){
+			const curDisplayStyle = elem.style.display;
+			if(curDisplayStyle === 'none' || curDisplayStyle === ''){
+				elem.style.display = 'block';
+			}else{
+				elem.style.display = 'none';
+			}
+		}
+		function toggleMenuDisplay(e){
+			const dropdown = e.currentTarget.parentNode;
+			const menu = dropdown.querySelector('.menu');
+			const icon = dropdown.querySelector('.fa-angle-right');
+			toggleClass(menu,'hide');
+			toggleClass(icon,'rotate-90');
+		}
+		function handleOptionSelected(e){
+			toggleClass(e.target.parentNode,'hide');
+			const id = e.target.id;
+			const newValue = e.target.textContent + ' ';
+			const titleElem = document.querySelector('.dropdown .title');
+			const icon = document.querySelector('.dropdown .title .fa');
+			titleElem.textContent = newValue;
+			titleElem.appendChild(icon);
+			document.querySelector('.dropdown .title').dispatchEvent(new Event('change'));
+			setTimeout(() => toggleClass(icon,'rotate-90',0));
+		}
+	</script>
+</body>
+</html>

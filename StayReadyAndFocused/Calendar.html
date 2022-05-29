@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .form-control-primary{
+      margin: 10px;
+      opacity: 1;
+      border-radius: 2px;
+    }
+    .sidebar{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 100;
+      padding: 70px 0 0 10px;
+      border-radius: 1px solid #d3d3d3;
+    }
+    .left-sidebar{
+      position: sticky;
+      top: 0;
+      height: calc(100vh - 70px);
+    }
+    .sidebar-nav li .nav-link{
+      color: #333;
+      font-weight: 500;
+    }
+    .main{
+      padding-top: 90px;
+    }
+    main .card{
+      margin-bottom: 20px;
+    }
+    .btn {
+        margin-top:2.5%;
+        margin-left: 25%;
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    .btn:hover {
+        background-color: RoyalBlue;
+    }
+  </style>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard.html">Duomly Dashboard</a>
+<input type="text" class="form-control form-control-primary w-100" placeholder="Search..." >
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+    <a class="nav-link" href="#">Logout</a>
+  </li>
+</ul>
+</nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 bg-light d-none d-md-block sidebar">
+                <div class="left-sidebar">
+                    <ul class="nav flex-column sidebar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            Calendar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            Alarms
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            To-Do List (Checklist)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            Text Summarization
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            Flash Cards
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Notes.html">
+                            <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+                            Notes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<h2 style="padding-top: 10%; padding-left: 25%">Calendar</h2>
+<div class="form-group">
+    <div id="calendar"></div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    
+</div>
+</main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+        function doDL(s){
+            function dataUrl(data) {return "data:x-application/text," + escape(data);}
+            window.open(dataUrl(s));
+        }
+        </script>
+    <script>!function() {
+
+        var today = moment();
+      
+        function Calendar(selector, events) {
+          this.el = document.querySelector(selector);
+          this.events = events;
+          this.current = moment().date(1);
+          this.draw();
+          var current = document.querySelector('.today');
+          if(current) {
+            var self = this;
+            window.setTimeout(function() {
+              self.openDay(current);
+            }, 500);
+          }
+        }
+      
+        Calendar.prototype.draw = function() {
+          //Create Header
+          this.drawHeader();
+      
+          //Draw Month
+          this.drawMonth();
+      
+          this.drawLegend();
+        }
+      
+        Calendar.prototype.drawHeader = function() {
+          var self = this;
+          if(!this.header) {
+            //Create the header elements
+            this.header = createElement('div', 'header');
+            this.header.className = 'header';
+      
+            this.title = createElement('h1');
+      
+            var right = createElement('div', 'right');
+            right.addEventListener('click', function() { self.nextMonth(); });
+      
+            var left = createElement('div', 'left');
+            left.addEventListener('click', function() { self.prevMonth(); });
+      
+            //Append the Elements
+            this.header.appendChild(this.title); 
+            this.header.appendChild(right);
+            this.header.appendChild(left);
+            this.el.appendChild(this.header);
+          }
+      
+          this.title.innerHTML = this.current.format('MMMM YYYY');
+        }
+      
+        Calendar.prototype.drawMonth = function() {
+          var self = this;
+          
+          this.events.forEach(function(ev) {
+           ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+          });
+          
+          
+          if(this.month) {
+            this.oldMonth = this.month;
+            this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+            this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+              self.oldMonth.parentNode.removeChild(self.oldMonth);
+              self.month = createElement('div', 'month');
+              self.backFill();
+              self.currentMonth();
+              self.fowardFill();
+              self.el.appendChild(self.month);
+              window.setTimeout(function() {
+                self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+              }, 16);
+            });
+          } else {
+              this.month = createElement('div', 'month');
+              this.el.appendChild(this.month);
+              this.backFill();
+              this.currentMonth();
+              this.fowardFill();
+              this.month.className = 'month new';
+          }
+        }
+      
+        Calendar.prototype.backFill = function() {
+          var clone = this.current.clone();
+          var dayOfWeek = clone.day();
+      
+          if(!dayOfWeek) { return; }
+      
+          clone.subtract('days', dayOfWeek+1);
+      
+          for(var i = dayOfWeek; i > 0 ; i--) {
+            this.drawDay(clone.add('days', 1));
+          }
+        }
+      
+        Calendar.prototype.fowardFill = function() {
+          var clone = this.current.clone().add('months', 1).subtract('days', 1);
+          var dayOfWeek = clone.day();
+      
+          if(dayOfWeek === 6) { return; }
+      
+          for(var i = dayOfWeek; i < 6 ; i++) {
+            this.drawDay(clone.add('days', 1));
+          }
+        }
+      
+        Calendar.prototype.currentMonth = function() {
+          var clone = this.current.clone();
+      
+          while(clone.month() === this.current.month()) {
+            this.drawDay(clone);
+            clone.add('days', 1);
+          }
+        }
+      
+        Calendar.prototype.getWeek = function(day) {
+          if(!this.week || day.day() === 0) {
+            this.week = createElement('div', 'week');
+            this.month.appendChild(this.week);
+          }
+        }
+      
+        Calendar.prototype.drawDay = function(day) {
+          var self = this;
+          this.getWeek(day);
+      
+          //Outer Day
+          var outer = createElement('div', this.getDayClass(day));
+          outer.addEventListener('click', function() {
+            self.openDay(this);
+          });
+      
+          //Day Name
+          var name = createElement('div', 'day-name', day.format('ddd'));
+      
+          //Day Number
+          var number = createElement('div', 'day-number', day.format('DD'));
+      
+      
+          //Events
+          var events = createElement('div', 'day-events');
+          this.drawEvents(day, events);
+      
+          outer.appendChild(name);
+          outer.appendChild(number);
+          outer.appendChild(events);
+          this.week.appendChild(outer);
+        }
+      
+        Calendar.prototype.drawEvents = function(day, element) {
+          if(day.month() === this.current.month()) {
+            var todaysEvents = this.events.reduce(function(memo, ev) {
+              if(ev.date.isSame(day, 'day')) {
+                memo.push(ev);
+              }
+              return memo;
+            }, []);
+      
+            todaysEvents.forEach(function(ev) {
+              var evSpan = createElement('span', ev.color);
+              element.appendChild(evSpan);
+            });
+          }
+        }
+      
+        Calendar.prototype.getDayClass = function(day) {
+          classes = ['day'];
+          if(day.month() !== this.current.month()) {
+            classes.push('other');
+          } else if (today.isSame(day, 'day')) {
+            classes.push('today');
+          }
+          return classes.join(' ');
+        }
+      
+        Calendar.prototype.openDay = function(el) {
+          var details, arrow;
+          var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
+          var day = this.current.clone().date(dayNumber);
+      
+          var currentOpened = document.querySelector('.details');
+      
+          //Check to see if there is an open detais box on the current row
+          if(currentOpened && currentOpened.parentNode === el.parentNode) {
+            details = currentOpened;
+            arrow = document.querySelector('.arrow');
+          } else {
+            //Close the open events on differnt week row
+            //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
+            if(currentOpened) {
+              currentOpened.addEventListener('webkitAnimationEnd', function() {
+                currentOpened.parentNode.removeChild(currentOpened);
+              });
+              currentOpened.addEventListener('oanimationend', function() {
+                currentOpened.parentNode.removeChild(currentOpened);
+              });
+              currentOpened.addEventListener('msAnimationEnd', function() {
+                currentOpened.parentNode.removeChild(currentOpened);
+              });
+              currentOpened.addEventListener('animationend', function() {
+                currentOpened.parentNode.removeChild(currentOpened);
+              });
+              currentOpened.className = 'details out';
+            }
+      
+            //Create the Details Container
+            details = createElement('div', 'details in');
+      
+            //Create the arrow
+            var arrow = createElement('div', 'arrow');
+      
+            //Create the event wrapper
+      
+            details.appendChild(arrow);
+            el.parentNode.appendChild(details);
+          }
+      
+          var todaysEvents = this.events.reduce(function(memo, ev) {
+            if(ev.date.isSame(day, 'day')) {
+              memo.push(ev);
+            }
+            return memo;
+          }, []);
+      
+          this.renderEvents(todaysEvents, details);
+      
+          arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+        }
+      
+        Calendar.prototype.renderEvents = function(events, ele) {
+          //Remove any events in the current details element
+          var currentWrapper = ele.querySelector('.events');
+          var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+      
+          events.forEach(function(ev) {
+            var div = createElement('div', 'event');
+            var square = createElement('div', 'event-category ' + ev.color);
+            var span = createElement('span', '', ev.eventName);
+      
+            div.appendChild(square);
+            div.appendChild(span);
+            wrapper.appendChild(div);
+          });
+      
+          if(!events.length) {
+            var div = createElement('div', 'event empty');
+            var span = createElement('span', '', 'No Events');
+      
+            div.appendChild(span);
+            wrapper.appendChild(div);
+          }
+      
+          if(currentWrapper) {
+            currentWrapper.className = 'events out';
+            currentWrapper.addEventListener('webkitAnimationEnd', function() {
+              currentWrapper.parentNode.removeChild(currentWrapper);
+              ele.appendChild(wrapper);
+            });
+            currentWrapper.addEventListener('oanimationend', function() {
+              currentWrapper.parentNode.removeChild(currentWrapper);
+              ele.appendChild(wrapper);
+            });
+            currentWrapper.addEventListener('msAnimationEnd', function() {
+              currentWrapper.parentNode.removeChild(currentWrapper);
+              ele.appendChild(wrapper);
+            });
+            currentWrapper.addEventListener('animationend', function() {
+              currentWrapper.parentNode.removeChild(currentWrapper);
+              ele.appendChild(wrapper);
+            });
+          } else {
+            ele.appendChild(wrapper);
+          }
+        }
+      
+        Calendar.prototype.drawLegend = function() {
+          var legend = createElement('div', 'legend');
+          var calendars = this.events.map(function(e) {
+            return e.calendar + '|' + e.color;
+          }).reduce(function(memo, e) {
+            if(memo.indexOf(e) === -1) {
+              memo.push(e);
+            }
+            return memo;
+          }, []).forEach(function(e) {
+            var parts = e.split('|');
+            var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+            legend.appendChild(entry);
+          });
+          this.el.appendChild(legend);
+        }
+      
+        Calendar.prototype.nextMonth = function() {
+          this.current.add('months', 1);
+          this.next = true;
+          this.draw();
+        }
+      
+        Calendar.prototype.prevMonth = function() {
+          this.current.subtract('months', 1);
+          this.next = false;
+          this.draw();
+        }
+      
+        window.Calendar = Calendar;
+      
+        function createElement(tagName, className, innerText) {
+          var ele = document.createElement(tagName);
+          if(className) {
+            ele.className = className;
+          }
+          if(innerText) {
+            ele.innderText = ele.textContent = innerText;
+          }
+          return ele;
+        }
+      }();
+      
+      !function() {
+        var data = [
+        ];
+      
+        
+      
+        function addDate(ev) {
+          
+        }
+      
+        var calendar = new Calendar('#calendar', data);
+      
+      }();
+      </script>
+  </body>
+</html>
