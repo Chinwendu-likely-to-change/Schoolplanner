@@ -21,6 +21,7 @@ jobs:
           command: |
             ls
             pwd
+            echo "hello"
             # cd Schoolplanner
             # gsutil rm -a gs://school-planner/**
             # gsutil cp * gs://school-planner
@@ -39,7 +40,7 @@ workflows:
     jobs:
       - Cloning:
           context: schoolplanner
-          requires:
-          - deploy
       - deploy:
          context: schoolplanner
+         requires:
+            - Cloning
