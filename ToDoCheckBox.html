@@ -1,45 +1,252 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>To-Do Checklist</title>
-  <style>
-  *{
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TO DO LIST</title>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<style>
+    *{
+
     padding: 0;
+
     margin: 0;
+
+    font-family: sans-serif;
+
     box-sizing: border-box;
-    font-family: cursive;
-  }
-  body{
-    background: #f2f2f2;
+
+}
+
+body {
+
+    height: 100vh;
+
+    background: white;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+.BOX {
+
+    height: 350px;
+
+    width: 300px;
+
+    background: #edf1f5;
+
+    position: relative;
+
+}
+
+.BOX1{
+
+    height: 70px;
+
+    width: 100%;
+
+    background: #007bff;
+
+    color: #fff;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+.BOX2{
+
+    font-size: 21px; 
+
+    position: absolute;
+
+    top: 90px;
+
+    left: 20px;
+
+    height: 45px;
+
+    border: none;
+
+    width: 260px;
+
+    border-bottom: 2px solid #4b4949;
+
+    outline: none;
+
+    background: transparent;
+
+    padding: 0 10px;
+
+    color: #313131;
+
+
+}
+
+.BOX2::placeholder {
+
+    color: #313131;
+
+}
+
+.line{
+
+    position: absolute;
+
+    top: 150px;
+
+    left: 20px;
+
+    list-style: none;
+
+    height: 120px;
+
+    width: 260px;
+
     overflow: auto;
-  }
-  h1{
-    text-align: center;
-    margin: 5%;
-    font-size: 3rem;
-    text-decoration: underline;
-  }
-  ul{
-    text-align: left;
-    padding-left: 10%;
-    padding: 7%;
-    font-size: 2rem;
-    list-style: circle;
-  }
-  li:hover{
-    color: red;
-    margin: 4%;
-    transition: 1.5s ease;
+
+}
+
+.line li {
+
+    height: 50px;
+
+    width: 100%;
+
+    margin: 4px 0;
+
+    position: relative;
+
+    left: 0;
+
+    border: 1px solid #1f3148;
+
+    overflow: hidden;
+
+}
+
+.line li h4 {
+
+    height: 50px;
+
+    width: 320px;
+
+    padding: 0 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    color: #1f3148;
+
+    overflow: hidden;
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+}
+
+.line li .deleteTask {
+
+    height: 50px;
+
+    width: 40px;
+
+    z-index: 999;
+
+    display: grid;
+
+    place-items: center;
+
+    position: absolute;
+
+    right: -50px;
+
+    background: #007bff;
+
+    color: #e2e2e2;
+
+    transition: 0.7s all ease-in-out;
+
     cursor: pointer;
-  }
-  .backButton{
+
+}
+
+.line li:hover .deleteTask {
+
+    right: 0;
+
+}
+
+
+.btn{
+
+    height: 50px;
+
+    width: 220px;
+
+    position: absolute;
+
+    left: 40px;
+
+    bottom: 20px;
+
+    background: #007bff;
+
+    outline: none;
+
+    color: #fff;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size:20px;
+
+    transition: all .8s ease-in;
+
+}
+
+.btn:hover{
+
+    background: transparent;
+
+    border: 3px solid #007bff;
+
+    color: #007bff;
+
+    font-size: 20px;
+
+    border-radius: 4px;
+
+}
+
+.backButton{
     border-radius: 12px;
     color: white;
-    background-color: red;
+    background-color: #007bff;
   }
-</style>
-<script>
+
+  h2{
+      color:#007bff;
+  }
+
+  </style>
+
+  <script>
     function goToPreviousPage(){
       window.open("file:///C:/Users/gavin/Documents/LateNightHacks/dashboard.html");
     }
@@ -59,33 +266,70 @@
       }
     }
   </script>
+
 </head>
+
 <body>
-  <div class="container">
-    <h1 class="row">
-      To-Do Application
-    </h1>
-    <h3 id="descriptionText">
+
+     <h2 id="descriptionText">
     Feel free to add a collection of tasks yet to accomplish today. Simply enter said task in the box below and click 'add'. When you have completed the task specified, click on it and it will be removed from vision and from this list.</h3>
-    </h3>
+    </h2>
     <button class="backButton" type="button" onclick="goToPreviousPage()">Back</button>
     <br/><br/>
-    <div class="row">
-      <form class="form-inline col-sm-offset-3">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="glyphicon glyphicon-pencil"></i>
-          </span>
-          <input type="text" class="form-control" placeholder="todo-item" id="box" style="width:30vw"/>
-        </div>
-        <div class="form-group">
-          <input type="button" class="btn btn-primary form-control" value="add" style="width: 10vw" onclick="add_item()"/>
-        </div>
-      </form>
+
+
+    <div class="BOX">
+
+        <h1 class="BOX1">TO DO LIST </h1>
+
+        <input type="text" placeholder="Enter Your Task" class="BOX2">
+
+        <ul class="line">
+
+        </ul>
+
+        <button class="btn">ADD</button>
+
     </div>
-    <div class="row">
-      <ul id="list_item"></ul>
-    </div>
-  </div>
+
+    <script>
+        
+window.onload=function(){
+let task = document.querySelector(".BOX2");
+
+let list = document.querySelector(".line");
+
+let addTask = document.querySelector(".btn");
+
+
+addTask.addEventListener("click" , ()=>{
+    
+    list.insertAdjacentHTML(`afterbegin` , `<li>
+    
+                <i class="fas fa-trash-alt deleteTask"></i>
+                
+                <h4>${task.value}</h4>
+                
+            </li>`);
+            
+            task.value = "";
+            
+            let deleteTask = document.querySelectorAll(".deleteTask");
+            
+            deleteTask.forEach(del =>{
+                
+                del.addEventListener("click" , ()=>{
+                    
+                    del.parentElement.remove();
+                    
+                })
+                
+            })
+            
+})}
+
+    </script>
+
 </body>
+
 </html>
