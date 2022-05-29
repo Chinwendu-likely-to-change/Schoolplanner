@@ -1,0 +1,46 @@
+version: 2.1
+
+orbs:
+  gcp-cli: circleci/gcp-cli@2.2.0
+executors:
+  docker-publisher:
+    docker:
+      - image: cimg/base:2022.03
+        auth:
+          username: $DOCKERHUB_USERNAME  
+          password: $DOCKERHUB_PASSWORD
+
+jobs:
+    deploy:
+      executor: gcp-cli/default
+      steps:
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - run:
+          name: delete and copy files
+          command: |
+            git clone $repo
+            ls
+            pwd
+            echo "hello"
+            cd Schoolplanner/StayReadyAndFocused
+            gsutil rm -a gs://school-planner/**
+            gsutil cp * gs://school-planner
+    Cloning:
+      executor: docker-publisher
+      steps:
+      - run:
+          name: clone
+          command: |
+            git clone $repo
+            ls
+workflows:
+  version: 2
+  Clone-deploy:
+    jobs:
+      - Cloning:
+          context: schoolplanner
+      - deploy:
+         context: schoolplanner
+         requires:
+            - Cloning
