@@ -26,21 +26,21 @@ jobs:
             # gsutil rm -a gs://school-planner/**
             # gsutil cp * gs://school-planner
 
-    Cloning:
-      executor: docker-publisher
-      steps:
-      - run:
-          name: clone
-          command: |
-            git clone $repo
+    # Cloning:
+    #   executor: docker-publisher
+    #   steps:
+    #   - run:
+    #       name: clone
+    #       command: |
+    #         git clone $repo
 
 workflows:
   version: 2
   Clone-deploy:
     jobs:
-      - Cloning:
-          context: schoolplanner
+      # - Cloning:
+      #     context: schoolplanner
       - deploy:
          context: schoolplanner
-         requires:
-            - Cloning
+        #  requires:
+        #     - Cloning
