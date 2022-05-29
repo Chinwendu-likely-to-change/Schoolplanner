@@ -1,0 +1,41 @@
+version: 2.1
+
+orbs:
+  gcp-cli: circleci/gcp-cli@2.2.0
+executors:
+  docker-publisher:
+    docker:
+      - image: cimg/base
+        auth:
+          username: $DOCKERHUB_USERNAME  
+          password: $DOCKERHUB_PASSWORD
+
+jobs:
+    deploy:
+      executor: gcp-cli/default
+      steps:
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - run:
+          name: delete and copy files
+          command: |
+            cd Schoolplanner
+            gsutil rm -a gs://school-planner/**
+            gsutil cp * gs://school-planner
+
+    Cloning:
+      executor: docker-publisher
+      steps:
+      - run:
+          name: clone
+          command: |
+            git clone $repo
+
+workflows:
+  version: 2
+  Clone-deploy:
+    jobs:
+       - Cloning:
+          requires:
+            - deploy
+       - deploy
