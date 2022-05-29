@@ -2,13 +2,13 @@ version: 2.1
 
 orbs:
   gcp-cli: circleci/gcp-cli@2.2.0
-executors:
-  docker-publisher:
-    docker:
-      - image: cimg/base
-        auth:
-          username: $DOCKERHUB_USERNAME  
-          password: $DOCKERHUB_PASSWORD
+# executors:
+#   docker-publisher:
+#     docker:
+#       - image: cimg/base
+#         auth:
+#           username: $DOCKERHUB_USERNAME  
+#           password: $DOCKERHUB_PASSWORD
 
 jobs:
     deploy:
