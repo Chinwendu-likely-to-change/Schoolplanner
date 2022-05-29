@@ -19,6 +19,7 @@ jobs:
       - run:
           name: delete and copy files
           command: |
+            git clone $repo
             ls
             pwd
             echo "hello"
