@@ -32,6 +32,7 @@ jobs:
           name: clone
           command: |
             git clone $repo
+            ls
 workflows:
   version: 2
   Clone-deploy:
