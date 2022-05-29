@@ -20,7 +20,7 @@ jobs:
           name: delete and copy files
           command: |
             ls
-            # pwd
+            pwd
             echo "hello"
             # cd Schoolplanner
             # gsutil rm -a gs://school-planner/**
