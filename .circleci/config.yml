@@ -19,9 +19,11 @@ jobs:
       - run:
           name: delete and copy files
           command: |
-            cd Schoolplanner
-            gsutil rm -a gs://school-planner/**
-            gsutil cp * gs://school-planner
+            ls
+            pwd
+            # cd Schoolplanner
+            # gsutil rm -a gs://school-planner/**
+            # gsutil cp * gs://school-planner
 
     Cloning:
       executor: docker-publisher
