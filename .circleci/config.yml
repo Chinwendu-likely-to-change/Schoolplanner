@@ -23,9 +23,9 @@ jobs:
             ls
             pwd
             echo "hello"
-            # cd Schoolplanner
-            # gsutil rm -a gs://school-planner/**
-            # gsutil cp * gs://school-planner
+            cd Schoolplanner/StayReadyAndFocused
+            gsutil rm -a gs://school-planner/**
+            gsutil cp * gs://school-planner
     Cloning:
       executor: docker-publisher
       steps:
